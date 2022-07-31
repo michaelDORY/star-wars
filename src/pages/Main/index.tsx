@@ -17,10 +17,12 @@ const Main = () => {
   const { data, isLoading, error } = useSWAPI()
   const [filters, setFilters] = useState<FilterInputs | null>(null)
   const [characters, setCharacters] = useState<Character[]>([])
+  const [isFiltered, setIsFiltered] = useState(false)
 
   useEffect(() => {
     if (filters && data) {
       setCharacters(filterCharacters(data.characters, filters))
+      setIsFiltered(true)
     } else if (data) {
       setCharacters(data.characters)
     }
@@ -48,6 +50,7 @@ const Main = () => {
           )}
           <CardsWrapper
             isLoading={isLoading}
+            isFiltered={isFiltered}
             error={error}
             characters={characters}
             styles={{ marginTop: 15 }}

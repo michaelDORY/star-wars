@@ -6,12 +6,13 @@ import CharacterCard from '../CharacterCard'
 interface Props {
   styles: object
   isLoading: boolean
+  isFiltered: boolean
   error: Error | null
   characters: Character[]
 }
 
 const CardsWrapper: FC<Props> = (props) => {
-  const { styles, isLoading, error, characters } = props
+  const { styles, isLoading, isFiltered, error, characters } = props
 
   if (isLoading)
     return (
@@ -21,7 +22,8 @@ const CardsWrapper: FC<Props> = (props) => {
     )
   if (error) return <Typography variant='body1'>Something went wrong(</Typography>
 
-  if (!characters.length) return <Typography variant='h5'>No characters found</Typography>
+  if (!characters.length && isFiltered)
+    return <Typography variant='h5'>No characters found</Typography>
 
   return (
     <Grid container justifyContent='center' gap={3} style={{ ...styles }}>
