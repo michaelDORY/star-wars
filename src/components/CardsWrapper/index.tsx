@@ -19,7 +19,7 @@ const CardsWrapper: FC<Props> = (props) => {
         <CircularProgress size={60} />
       </Stack>
     )
-  if (error) return <Typography variant='body1'>{error.toString()}</Typography>
+  if (error) return <Typography variant='body1'>Something went wrong(</Typography>
 
   if (!characters.length) return <Typography variant='h5'>No characters found</Typography>
 
