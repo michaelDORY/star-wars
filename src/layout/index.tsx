@@ -1,6 +1,5 @@
-import { Container, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import React, { FC, ReactNode } from 'react'
-import FilterForm from '../components/FilterForm/FilterForm'
 import Header from '../components/Header'
 
 interface Props {
@@ -19,10 +18,7 @@ const Layout: FC<Props> = (props) => {
       }}
     >
       <Header />
-      <Stack direction='row' height='100%' flexGrow={1}>
-        <FilterForm />
-        <Container sx={{ paddingY: 10 }}>{children}</Container>
-      </Stack>
+      {children}
     </Stack>
   )
 }

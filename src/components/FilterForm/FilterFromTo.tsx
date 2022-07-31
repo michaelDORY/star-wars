@@ -1,7 +1,7 @@
 import { Stack, TextField } from '@mui/material'
 import React, { FC } from 'react'
 import { UseFormRegister } from 'react-hook-form'
-import { FilterInputs } from './FilterForm'
+import { FilterInputs } from '../../types'
 
 interface Props<T> {
   register: UseFormRegister<T>
@@ -13,9 +13,9 @@ const FilterFromTo: FC<Props<FilterInputs>> = (props) => {
   return (
     <Stack direction='row' gap={2}>
       {/* @ts-ignore */}
-      <TextField type='number' label='From' {...register(`${optionName}.from`)} />
+      <TextField type='number' label='min' {...register(`${optionName}.from`)} />
       {/* @ts-ignore */}
-      <TextField type='number' label='To' {...register(`${optionName}.to`)} />
+      <TextField type='number' label='max' {...register(`${optionName}.to`)} />
     </Stack>
   )
 }

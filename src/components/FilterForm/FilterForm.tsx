@@ -13,35 +13,31 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material'
-import React, { useContext } from 'react'
+import React, { Dispatch, FC, SetStateAction, useContext } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { GlobalContext } from '../../App'
+import { FetchedFilm, FetchedSpecies, FilterInputs } from '../../types'
 import AccordionItem from '../ui/AccordionItem'
 import FilterFormWrapper from './FilterFormWrapper'
 import FilterFromTo from './FilterFromTo'
 import CloseIcon from '@mui/icons-material/Close'
 
-export type FilterInputs = {
-  movie: string | null
-  species: string[]
-  height: {
-    from: number | null
-    to: number | null
-  }
-  mass: {
-    from: number | null
-    to: number | null
-  }
+interface Props {
+  species: FetchedSpecies[]
+  films: FetchedFilm[]
+  setFilters: Dispatch<SetStateAction<FilterInputs | null>>
 }
 
-const FilterForm = () => {
-  const { register, handleSubmit } = useForm<FilterInputs>()
+const FilterForm: FC<Props> = (props) => {
+  const { species, films, setFilters } = props
+  const { register, handleSubmit, reset } = useForm<FilterInputs>()
   const { setIsFilterFormOpen: setIsOpen } = useContext(GlobalContext)
   const theme = useTheme()
   const isPhone = useMediaQuery(theme.breakpoints.between('xs', 'sm'))
 
   const onSubmit: SubmitHandler<FilterInputs> = (data) => {
     setIsOpen(false)
+    setFilters(data)
   }
 
   return (
@@ -69,19 +65,19 @@ const FilterForm = () => {
           <Stack gap='10px'>
             <AccordionItem summary='Starred in a movie'>
               <Autocomplete
-                options={['a', 'b']}
+                options={films.map((film) => film.title)}
                 renderInput={(params) => (
-                  <TextField variant='standard' {...register('movie')} {...params} label='Movie' />
+                  <TextField variant='standard' {...register('film')} {...params} label='Movie' />
                 )}
               />
             </AccordionItem>
             <AccordionItem summary='Species'>
               <FormGroup {...register('species')}>
-                {['dd', 'ccc'].map((item) => (
+                {species.map(({ name }) => (
                   <FormControlLabel
-                    key={item}
-                    control={<Checkbox value={item} {...register('species')} />}
-                    label={item}
+                    key={name}
+                    control={<Checkbox value={name} {...register('species')} />}
+                    label={name}
                   />
                 ))}
               </FormGroup>
@@ -101,6 +97,15 @@ const FilterForm = () => {
             sx={{ marginTop: 3 }}
           >
             Show
+          </Button>
+          <Button
+            onClick={() => reset()}
+            variant='outlined'
+            size='large'
+            fullWidth
+            sx={{ marginTop: 3 }}
+          >
+            Reset
           </Button>
         </Box>
       </Container>
