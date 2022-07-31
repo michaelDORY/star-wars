@@ -1,6 +1,6 @@
 import { Box, Container, SvgIcon } from '@mui/material'
 import React from 'react'
-import { ReactComponent as LogoImage } from '../assets/icons/logo.svg'
+import { ReactComponent as LogoImage } from '../../assets/icons/logo.svg'
 
 const Header = () => {
   return (

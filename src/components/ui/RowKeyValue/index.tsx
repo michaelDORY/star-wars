@@ -13,7 +13,7 @@ const RowKeyValue: FC<Props> = (props) => {
       <Typography variant='h6' color='primary'>
         {keyHeader + ':'}
       </Typography>
-      <Typography variant='body1' sx={{ textAlign: 'right' }}>
+      <Typography variant='body1' sx={{ textAlign: 'right', maxWidth: 200 }}>
         {Array.isArray(value) ? value.join(', ') : value}
       </Typography>
     </Stack>

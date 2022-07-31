@@ -1,8 +1,8 @@
 import { Box, Modal, Stack } from '@mui/material'
 import React, { Dispatch, FC, SetStateAction } from 'react'
-import { Character } from '../types'
-import ModalPaper from './ui/ModalPaper'
-import RowKeyValue from './ui/RowKeyValue'
+import { Character } from '../../types'
+import ModalPaper from '../ui/ModalPaper'
+import RowKeyValue from '../ui/RowKeyValue'
 
 interface Props {
   isOpen: boolean
@@ -49,7 +49,7 @@ const ModalCharacterDetails: FC<Props> = (props) => {
               },
             }}
           >
-            <img src={imageUrl} alt='character-photo' />
+            <img src={imageUrl} alt={name} />
           </Box>
           {Object.entries(characterInfo).map(([key, value]: [string, string | string[]]) => {
             return <RowKeyValue key={key} keyHeader={key} value={value} />

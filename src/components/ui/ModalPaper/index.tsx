@@ -1,5 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close'
-import { Fab, Paper, useMediaQuery, useTheme } from '@mui/material'
+import { Paper, useMediaQuery, IconButton, useTheme } from '@mui/material'
 import React, { Dispatch, FC, ReactNode, SetStateAction } from 'react'
 
 const paperStyles = {
@@ -39,7 +39,7 @@ const ModalPaper: FC<Props> = (props) => {
       sx={isPhone ? { ...paperStyles, ...paperMobile } : { ...paperStyles, ...paperNotMobile }}
     >
       {isPhone && (
-        <Fab
+        <IconButton
           size='small'
           onClick={() => setIsOpen(false)}
           sx={{
@@ -50,7 +50,7 @@ const ModalPaper: FC<Props> = (props) => {
           }}
         >
           <CloseIcon />
-        </Fab>
+        </IconButton>
       )}
       {children}
     </Paper>

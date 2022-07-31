@@ -1,14 +1,14 @@
 import { Typography, Button, useTheme, useMediaQuery, Container, Stack } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
-import { GlobalContext } from '../App'
-import CardsWrapper from '../components/CardsWrapper'
-import BgImage from '../assets/images/bg.jpg'
-import FilterForm from '../components/FilterForm/FilterForm'
-import filterCharacters from '../helpers/characters/filter'
-import useSWAPI from '../hooks/useSWAPI'
-import Layout from '../layout'
+import CardsWrapper from '../../components/CardsWrapper'
+import BgImage from '../../assets/images/bg.jpg'
+import FilterForm from '../../components/FilterForm'
+import { GlobalContext } from '../../context/global'
+import filterCharacters from '../../helpers/characters/filter'
+import useSWAPI from '../../hooks/useSWAPI'
+import Layout from '../../layout'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
-import { Character, FilterInputs } from '../types'
+import { Character, FilterInputs } from '../../types'
 
 const Main = () => {
   const { setIsFilterFormOpen } = useContext(GlobalContext)

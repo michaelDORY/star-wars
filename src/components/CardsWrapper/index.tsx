@@ -1,7 +1,7 @@
 import { CircularProgress, Stack, Typography, Grid } from '@mui/material'
 import React, { FC } from 'react'
-import { Character } from '../types'
-import CharacterCard from './CharacterCard'
+import { Character } from '../../types'
+import CharacterCard from '../CharacterCard'
 
 interface Props {
   styles: object
@@ -20,6 +20,8 @@ const CardsWrapper: FC<Props> = (props) => {
       </Stack>
     )
   if (error) return <Typography variant='body1'>{error.toString()}</Typography>
+
+  if (!characters.length) return <Typography variant='h5'>No characters found</Typography>
 
   return (
     <Grid container justifyContent='center' gap={3} style={{ ...styles }}>

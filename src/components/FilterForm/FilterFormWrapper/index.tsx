@@ -1,6 +1,6 @@
 import { Box, useMediaQuery, useTheme } from '@mui/material'
 import React, { FC, ReactNode, useContext } from 'react'
-import { GlobalContext } from '../../App'
+import { GlobalContext } from '../../../context/global'
 
 const getMobileStyles = (isOpen: boolean) => ({
   position: 'fixed',
@@ -26,7 +26,7 @@ interface Props {
   children: ReactNode
 }
 
-const FilterFormWrapper: FC<Props> = (props) => {
+const Index: FC<Props> = (props) => {
   const { children } = props
   const { isFilterFormOpen: isOpen } = useContext(GlobalContext)
   const theme = useTheme()
@@ -44,4 +44,4 @@ const FilterFormWrapper: FC<Props> = (props) => {
   )
 }
 
-export default FilterFormWrapper
+export default Index

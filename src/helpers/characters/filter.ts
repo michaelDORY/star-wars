@@ -16,12 +16,13 @@ type filterCharactersType = (characters: Character[], filters: FilterInputs) => 
 const filterCharacters: filterCharactersType = (characters, filters) => {
   if (filters) {
     const { mass, height, species, film } = filters
+
     return characters.filter((character) => {
       const characterMass = Number.parseFloat(character.mass)
       const characterHeight = Number.parseFloat(character.height)
       const isProperHeight = isParamInRange(characterHeight, height.from, height.to)
       const isProperMass = isParamInRange(characterMass, mass.from, mass.to)
-      const isProperSpecies = species
+      const isProperSpecies = species.length
         ? character.species.some((elem) => species.includes(elem.name))
         : true
       const isProperFilm = film ? character.films.some((elem) => elem.title === film) : true

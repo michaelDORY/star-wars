@@ -1,14 +1,6 @@
-import React, { createContext, useState } from 'react'
+import React, { useState } from 'react'
+import { GlobalContext } from './context/global'
 import Main from './pages/Main'
-
-const initialGlobalContext = {
-  isFilterFormOpen: false,
-  setIsFilterFormOpen: (value: boolean) => {
-    initialGlobalContext.isFilterFormOpen = value
-  },
-}
-
-export const GlobalContext = createContext(initialGlobalContext)
 
 const App = () => {
   const [isFilterFormOpen, setIsFilterFormOpen] = useState(false)

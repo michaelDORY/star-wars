@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material'
 import React, { FC, ReactNode } from 'react'
-import Header from '../components/Header'
+import Index from '../components/Header'
 
 interface Props {
   children: ReactNode
@@ -17,7 +17,7 @@ const Layout: FC<Props> = (props) => {
         minHeight: '100vh',
       }}
     >
-      <Header />
+      <Index />
       {children}
     </Stack>
   )

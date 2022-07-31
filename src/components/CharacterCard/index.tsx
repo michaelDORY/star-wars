@@ -1,7 +1,7 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
 import React, { FC, useState } from 'react'
-import { Character } from '../types'
-import ModalCharacterDetails from './ModalCharacterDetails'
+import { Character } from '../../types'
+import ModalCharacterDetails from '../ModalCharacterDetails'
 
 interface Props {
   character: Character

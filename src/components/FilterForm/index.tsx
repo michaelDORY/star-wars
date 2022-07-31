@@ -15,7 +15,7 @@ import {
 } from '@mui/material'
 import React, { Dispatch, FC, SetStateAction, useContext } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { GlobalContext } from '../../App'
+import { GlobalContext } from '../../context/global'
 import { FetchedFilm, FetchedSpecies, FilterInputs } from '../../types'
 import AccordionItem from '../ui/AccordionItem'
 import FilterFormWrapper from './FilterFormWrapper'
@@ -30,7 +30,7 @@ interface Props {
 
 const FilterForm: FC<Props> = (props) => {
   const { species, films, setFilters } = props
-  const { register, handleSubmit, reset } = useForm<FilterInputs>()
+  const { register, handleSubmit } = useForm<FilterInputs>()
   const { setIsFilterFormOpen: setIsOpen } = useContext(GlobalContext)
   const theme = useTheme()
   const isPhone = useMediaQuery(theme.breakpoints.between('xs', 'sm'))
@@ -97,15 +97,6 @@ const FilterForm: FC<Props> = (props) => {
             sx={{ marginTop: 3 }}
           >
             Show
-          </Button>
-          <Button
-            onClick={() => reset()}
-            variant='outlined'
-            size='large'
-            fullWidth
-            sx={{ marginTop: 3 }}
-          >
-            Reset
           </Button>
         </Box>
       </Container>
